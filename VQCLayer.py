@@ -18,10 +18,4 @@ def makeVQCLayer(nQubit, depth, outputQubitsId = [0]):
     return qml.qnn.KerasLayer(qml.QNode(makeCircuit, dev),
                                {"weights": (depth, nQubit)},
                                output_dim=len(outputQubitsId))
-
-# def makeCircuit(inputs, weights, nQubit, outputQubitsId):
-#     # inputs must by in [-1,1]
-#     qml.AngleEmbedding(tf.math.asin(inputs), wires = range(nQubit), rotation='Y')
-#     qml.BasicEntanglerLayers(weights, wires=range(nQubit), rotation=qml.RY)
-#     return [qml.expval(qml.PauliZ(wires=i)) for i in outputQubitsId]
     
